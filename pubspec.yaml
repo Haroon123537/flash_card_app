@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   shared_preferences: ^2.5.5
   firebase_auth: ^6.7.0
+  firebase_core: ^4.15.0
 
 dev_dependencies:
   flutter_test:
@@ -79,8 +80,14 @@ flutter:
     - family: Poppins-light
       fonts:
         - asset: assets/fonts/Poppins-Light.ttf
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+
+    - family: Jakarta-semibold
+      fonts:
+        - asset: assets/fonts/PlusJakartaSans-SemiBold.ttf
+
+    - family: Inter-Medium    
+      fonts:  
+        - asset: assets/fonts/Inter_18pt-Medium.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

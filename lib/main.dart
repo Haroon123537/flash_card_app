@@ -5,8 +5,15 @@ import 'package:flashcard_quiz_app/my_flash_card.dart';
 import 'package:flashcard_quiz_app/sign_up.dart';
 import 'package:flashcard_quiz_app/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+import 'firebase_options.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   runApp(const MyApp());
 }
 
@@ -37,7 +44,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      initialRoute: '/splash',
+      initialRoute: '/signup',
       routes: {
         '/splash': (context) => const SplashScreen(),
         '/home': (context) => const HomePage(),
