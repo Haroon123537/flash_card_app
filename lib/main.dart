@@ -1,4 +1,5 @@
 import 'package:flashcard_quiz_app/about.dart';
+import 'package:flashcard_quiz_app/forget_password.dart';
 import 'package:flashcard_quiz_app/home_page.dart';
 import 'package:flashcard_quiz_app/login.dart';
 import 'package:flashcard_quiz_app/my_flash_card.dart';
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      initialRoute: '/signup',
+      initialRoute: '/login',
       routes: {
         '/splash': (context) => const SplashScreen(),
         '/home': (context) => const HomePage(),
@@ -52,6 +53,7 @@ class MyApp extends StatelessWidget {
         '/login': (context) => const LoginPage(),
         '/signup': (context) => const SignUpPage(),
         '/myflash': (context) => const MyFlashCard(),
+        '/forget': (context) => const ForgetPassword(),
       },
     );
   }
