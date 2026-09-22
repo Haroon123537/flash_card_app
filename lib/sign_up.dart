@@ -266,7 +266,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                           if (value == null || value.isEmpty) {
                                             return 'Please enter a password';
                                           } else if (value.length < 6 ||
-                                              value.length > 15) {
+                                              value.length > 20) {
                                             return 'Password must be between 6 and 15 characters';
                                           }
                                           return null;
