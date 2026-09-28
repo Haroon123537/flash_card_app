@@ -37,6 +37,8 @@ dependencies:
   shared_preferences: ^2.5.5
   firebase_auth: ^6.7.0
   firebase_core: ^4.15.0
+  dotted_border: ^3.1.0
+  
 
 dev_dependencies:
   flutter_test:
@@ -64,6 +66,8 @@ flutter:
   assets:
     - assets/images/app_logo.png
     - assets/images/mail_icon.png
+    - assets/images/home_background.png
+    - assets/images/center_icon.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -98,6 +102,16 @@ flutter:
     - family: Poppins-regular
       fonts:
         - asset: assets/fonts/Poppins-Regular.ttf 
+ 
+    - family: Roboto-boldcondensed
+      fonts:
+        - asset: assets/fonts/Roboto-BoldCondensed.ttf
+
+    - family: Poppins-semibold
+      fonts:
+        - asset: assets/fonts/Poppins-SemiBold.ttf     
+
+
     
   #
   # For details regarding fonts from package dependencies,

@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      initialRoute: '/login',
+      initialRoute: '/myflash',
       routes: {
         '/splash': (context) => const SplashScreen(),
         '/home': (context) => const HomePage(),
