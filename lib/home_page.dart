@@ -1,4 +1,4 @@
-import 'package:flashcard_quiz_app/about.dart';
+//import 'package:flashcard_quiz_app/about.dart';
 import 'package:flashcard_quiz_app/my_flash_card.dart';
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
@@ -16,7 +16,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int selectedIndex = 0;
   bool isloading = false;
-  final pages = [const HomePage(), const MyFlashCard(), const AboutPage()];
+  final pages = [const HomePage(), const MyFlashCard()];
   final GlobalKey<FormState> _form47Key = GlobalKey<FormState>();
   TextEditingController questioncontroller = TextEditingController();
   TextEditingController answercontroller = TextEditingController();
@@ -483,11 +483,6 @@ class _HomePageState extends State<HomePage> {
               context,
               MaterialPageRoute(builder: (context) => const MyFlashCard()),
             );
-          } else if (index == 2) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const AboutPage()),
-            );
           }
         },
 
@@ -505,14 +500,6 @@ class _HomePageState extends State<HomePage> {
             ),
             selectedIcon: Icon(Icons.style_outlined, color: Color(0xFF053fb3)),
             label: 'My FlashCards',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.info_outline, color: Color(0xFF292e57), size: 30),
-            label: 'About',
-            selectedIcon: Icon(
-              Icons.info_outline_rounded,
-              color: Color(0xFF053fb3),
-            ),
           ),
         ],
       ),
