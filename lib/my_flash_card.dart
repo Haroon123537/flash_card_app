@@ -21,6 +21,8 @@ class _MyFlashCardState extends State<MyFlashCard> {
 
     final savedCards = prefs.getStringList('flashcards') ?? [];
 
+    print('Loaded cards: $savedCards');
+
     setState(() {
       flashcards = savedCards
           .map((card) => jsonDecode(card) as Map<String, dynamic>)

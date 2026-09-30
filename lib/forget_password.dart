@@ -3,7 +3,7 @@ import 'package:flashcard_quiz_app/login.dart';
 import 'package:flutter/material.dart';
 
 class ForgetPassword extends StatefulWidget {
-  const new({super.key});
+  const ForgetPassword({super.key});
 
   @override
   State<ForgetPassword> createState() => _ForgetPasswordState();
@@ -12,6 +12,7 @@ class ForgetPassword extends StatefulWidget {
 class _ForgetPasswordState extends State<ForgetPassword> {
   final GlobalKey<FormState> _formedKey = GlobalKey<FormState>();
   bool isloading = false;
+  bool isload = false;
   final ScrollController _scrollController = ScrollController();
   TextEditingController emailController = TextEditingController();
 
@@ -25,8 +26,11 @@ class _ForgetPasswordState extends State<ForgetPassword> {
           controller: _scrollController,
           child: Stack(
             children: [
+              // Full screen gradient background
               Container(
-                //constraints: BoxConstraints.expand(),
+                constraints: BoxConstraints(
+                  minHeight: MediaQuery.of(context).size.height,
+                ),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topLeft,
@@ -38,35 +42,77 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                     ],
                   ),
                 ),
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 50, bottom: 50),
-                    child: Container(
-                      width: MediaQuery.of(context).size.width > 1000
-                          ? 900
-                          : MediaQuery.of(context).size.width * 0.92,
+              ),
 
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                          colors: [
-                            Color(0xFFFFFFFF), // White
-                            Color(0xFFF4F9FF), // Very light blue
-                          ],
+              // Top decorative circle
+              Positioned(
+                top: 30,
+                left: -100,
+                child: Container(
+                  height: 220,
+                  width: 220,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Color(0xFF00D9FF).withValues(alpha: 0.10),
+                  ),
+                ),
+              ),
+
+              // Bottom decorative circle
+              Positioned(
+                bottom: 0,
+                right: -50,
+                child: Container(
+                  height: 220,
+                  width: 220,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Color(0xFF00D9FF).withValues(alpha: 0.10),
+                  ),
+                ),
+              ),
+
+              // White form card
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 270,
+                  ),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width > 540
+                        ? 500
+                        : MediaQuery.of(context).size.width - 40,
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color(0xFF1e4150),
+                          blurRadius: 60.0,
+                          spreadRadius: 8.0,
                         ),
-                        borderRadius: BorderRadius.circular(20),
+                      ],
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [Color(0xFFFFFFFF), Color(0xFFF4F9FF)],
                       ),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           SizedBox(height: 25),
+
                           Image.asset(
                             'assets/images/mail_icon.png',
                             height: 100,
                             width: 100,
                           ),
+
                           SizedBox(height: 10),
+
                           Text(
                             "Forget Password?",
                             style: TextStyle(
@@ -76,9 +122,12 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                               letterSpacing: 0.5,
                             ),
                           ),
+
                           SizedBox(height: 8),
+
                           Text(
                             "Enter your email and we'll send you a reset link",
+                            textAlign: TextAlign.center,
                             style: TextStyle(
                               fontFamily: 'Poppins-regular',
                               color: Color(0xFF8A8A8A),
@@ -92,13 +141,11 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                SizedBox(height: 45),
+                                SizedBox(height: 30),
 
                                 SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.4,
+                                  width: double.infinity,
                                   child: TextFormField(
-                                    //key: _formKey,
                                     controller: emailController,
                                     decoration: InputDecoration(
                                       prefixIcon: Icon(
@@ -147,16 +194,15 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                                   ),
                                 ),
 
-                                SizedBox(height: 38),
+                                SizedBox(height: 25),
+
                                 isloading
                                     ? CircularProgressIndicator(
                                         color: Color(0xFF0645C2),
                                         strokeWidth: 3.0,
                                       )
                                     : SizedBox(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                            0.3,
+                                        width: double.infinity,
                                         child: ElevatedButton(
                                           onPressed: () async {
                                             if (!_formedKey.currentState!
@@ -243,40 +289,72 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                                           ),
                                         ),
                                       ),
-                                SizedBox(height: 15),
 
-                                SizedBox(height: 10),
+                                SizedBox(height: 15),
+                                isload
+                                    ? CircularProgressIndicator(
+                                        color: Color(0xFF0645C2),
+                                        strokeWidth: 3.0,
+                                      )
+                                    : SizedBox(
+                                        width: double.infinity,
+                                        child: ElevatedButton(
+                                          onPressed: () async {
+                                            setState(() {
+                                              isload = true;
+                                            });
+
+                                            try {
+                                              await Future.delayed(
+                                                const Duration(seconds: 2),
+                                              );
+
+                                              Navigator.pushReplacement(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      const LoginPage(),
+                                                ),
+                                              );
+                                            } finally {
+                                              if (mounted) {
+                                                setState(() {
+                                                  isloading = false;
+                                                });
+                                              }
+                                            }
+                                          },
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: Color(0xFF2fcdfc),
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: 50,
+                                              vertical: 20,
+                                            ),
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(30.0),
+                                            ),
+                                          ),
+                                          child: Text(
+                                            "Return To Login Page",
+                                            style: TextStyle(
+                                              color: Color(0xFFf3f7f8),
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold,
+                                              letterSpacing: 0.5,
+                                              fontFamily: 'Jakarta-semibold',
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+
+                                SizedBox(height: 30),
                               ],
                             ),
                           ),
                         ],
                       ),
                     ),
-                  ),
-                ),
-              ),
-              Positioned(
-                top: 30,
-                left: -100,
-                child: Container(
-                  height: 220,
-                  width: 220,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Color(0xFF00D9FF).withValues(alpha: 0.10),
-                  ),
-                ),
-              ),
-
-              Positioned(
-                bottom: 0,
-                right: -50,
-                child: Container(
-                  height: 220,
-                  width: 220,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Color(0xFF00D9FF).withValues(alpha: 0.10),
                   ),
                 ),
               ),

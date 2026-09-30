@@ -31,6 +31,9 @@ class _LoginPageState extends State<LoginPage> {
           child: Stack(
             children: [
               Container(
+                constraints: BoxConstraints(
+                  minHeight: MediaQuery.of(context).size.height,
+                ),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topLeft,
@@ -100,9 +103,8 @@ class _LoginPageState extends State<LoginPage> {
                                     SizedBox(height: 35),
 
                                     SizedBox(
-                                      width:
-                                          MediaQuery.of(context).size.width *
-                                          0.4,
+                                      width: 320,
+
                                       child: TextFormField(
                                         //key: _formKey,
                                         controller: emailController,
@@ -154,9 +156,7 @@ class _LoginPageState extends State<LoginPage> {
                                     ),
                                     SizedBox(height: 28),
                                     SizedBox(
-                                      width:
-                                          MediaQuery.of(context).size.width *
-                                          0.4,
+                                      width: 320,
                                       child: TextFormField(
                                         //key: _formKey,
                                         controller: passwordController,
@@ -226,6 +226,7 @@ class _LoginPageState extends State<LoginPage> {
                                             color: Color(0xFFf7fafb),
                                           )
                                         : TextButton(
+                                            style: ButtonStyle(),
                                             onPressed: () async {
                                               setState(() {
                                                 isforget = true;
@@ -266,7 +267,7 @@ class _LoginPageState extends State<LoginPage> {
                                             ),
                                           ),
 
-                                    SizedBox(height: 30),
+                                    SizedBox(height: 20),
                                     isloading
                                         ? CircularProgressIndicator(
                                             color: Color(0xFFf7fafb),

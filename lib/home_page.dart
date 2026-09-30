@@ -29,25 +29,22 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> saveFlashcard() async {
-    //Accessing sharedpreference object for a local storage
     final prefs = await SharedPreferences.getInstance();
 
-    //Then access existing cards or empty list
     final existingCards = prefs.getStringList('flashcards') ?? [];
 
-    //Then create a card in a form of map
-    final createcards = {
+    final createCard = {
       'question': questioncontroller.text.trim(),
       'answer': answercontroller.text.trim(),
     };
 
-    //Then converting the map into json because we want data in a string format
-    existingCards.add(jsonEncode(createcards));
+    existingCards.add(jsonEncode(createCard));
 
-    //Saving or storing that new data
-    await prefs.setStringList('flashcards', existingCards);
+    final saved = await prefs.setStringList('flashcards', existingCards);
 
-    //clearing both textfields
+    print('Saved successfully: $saved');
+    print('Saved cards: ${prefs.getStringList('flashcards')}');
+
     questioncontroller.clear();
     answercontroller.clear();
   }

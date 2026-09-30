@@ -37,6 +37,9 @@ class _SignUpPageState extends State<SignUpPage> {
           child: Stack(
             children: [
               Container(
+                constraints: BoxConstraints(
+                  minHeight: MediaQuery.of(context).size.height,
+                ),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topLeft,
@@ -84,8 +87,6 @@ class _SignUpPageState extends State<SignUpPage> {
                               width: double.infinity,
                               decoration: BoxDecoration(
                                 color: Color(0xFF063cb3),
-                                //backgroundBlendMode:
-                                //
                               ),
                               child: Form(
                                 key: _formKey,
@@ -105,12 +106,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                     ),
                                     SizedBox(height: 35),
                                     SizedBox(
-                                      width:
-                                          MediaQuery.of(context).size.width *
-                                          0.4,
+                                      width: 330,
                                       child: TextFormField(
-                                        // key: _formKey,
-                                        // controller: emailController,
                                         decoration: InputDecoration(
                                           prefixIcon: Icon(
                                             Icons.person,
@@ -155,11 +152,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                     ),
                                     SizedBox(height: 20),
                                     SizedBox(
-                                      width:
-                                          MediaQuery.of(context).size.width *
-                                          0.4,
+                                      width: 330,
                                       child: TextFormField(
-                                        //key: _formKey,
                                         controller: emailController,
                                         decoration: InputDecoration(
                                           prefixIcon: Icon(
@@ -209,11 +203,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                     ),
                                     SizedBox(height: 20),
                                     SizedBox(
-                                      width:
-                                          MediaQuery.of(context).size.width *
-                                          0.4,
+                                      width: 330,
                                       child: TextFormField(
-                                        //key: _formKey,
                                         controller: passwordController,
                                         obscureText: ishidden,
                                         decoration: InputDecoration(
@@ -394,11 +385,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                                 });
                                               }
                                             },
-
                                             style: TextButton.styleFrom(
                                               padding: EdgeInsets.zero,
-
-                                              //enabledMouseCursor: true
                                             ),
                                             child: Text(
                                               "Already have an account? Sign In",
@@ -411,6 +399,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                               ),
                                             ),
                                           ),
+                                    SizedBox(height: 30),
                                   ],
                                 ),
                               ),
